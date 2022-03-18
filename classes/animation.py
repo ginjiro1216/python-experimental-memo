@@ -1,11 +1,11 @@
 import abc
-
+from typing import Optional
 
 class Animation(abc.ABC):
     animation_name = None
     animation_type = None
 
-    def __init__(self, name: str, age: int):
+    def __init__(self, name: str, age: Optional[int]):
         self.name = name
         self.age = age
 
@@ -28,9 +28,18 @@ class HimoutoUmaru(Animation):
     animation_type = 'コメディ'
 
 
-umaru = HimoutoUmaru('うまるちゃん', 17)
+class Bakemonogatari(Animation):
+    animation_type = 'スリラー'
+    animation_name = '化物語'
+
+
+umaru = HimoutoUmaru('うまるちゃん', None)
+taihei = HimoutoUmaru('たいへい', None)
+koyomi = Bakemonogatari('阿良々木暦', 18)
+
 
 print(umaru)
-
+print(umaru == taihei)
+print(umaru == koyomi)
 
 
